@@ -1,48 +1,37 @@
-document.getElementById('jobForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Hide the input form and show the loading screen
-    document.getElementById('job-input').classList.remove('active');
-    document.getElementById('loading-screen').classList.add('active');
-    
-    // Simulate the loading screen process
+// Wait for the document to load
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // Get the button and form elements
+  const button = document.getElementById('submit-button');
+  const form = document.getElementById('job-form');
+  const loadingScreen = document.getElementById('loading-screen');
+  const punchlineScreen = document.getElementById('punchline-screen');
+  
+  // Hide loading and punchline screens initially
+  loadingScreen.style.display = 'none';
+  punchlineScreen.style.display = 'none';
+
+  // Add event listener to the button
+  button.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the page from refreshing
+
+    // Get user input
+    const jobTitle = document.getElementById('job-title').value;
+    const expectedWage = document.getElementById('expected-wage').value;
+
+    // Show loading screen
+    form.style.display = 'none';
+    loadingScreen.style.display = 'block';
+
+    // Simulate a delay for the punchline
     setTimeout(function() {
-      // After loading, show the severance screen
-      showSeveranceLetter();
-    }, 4000);  // 4 seconds for effect
+      loadingScreen.style.display = 'none';
+      punchlineScreen.style.display = 'block';
+      
+      // Generate punchline content
+      const punchlineText = `Dear applicant, we regret to inform you that your expected wage of ${expectedWage} for the job title "${jobTitle}" is too high. It's much more affordable to automate this position using AI.`;
+      document.getElementById('punchline-message').textContent = punchlineText;
+
+    }, 2000); // Delay in milliseconds
   });
-  
-  function showSeveranceLetter() {
-    // Hide loading screen and show the severance letter
-    document.getElementById('loading-screen').classList.remove('active');
-    document.getElementById('severance-screen').classList.add('active');
-    
-    // Get the user's input
-    const career = document.getElementById('career').value;
-    const wage = document.getElementById('wage').value;
-    
-    // Generate the severance letter
-    const letter = `
-    Dear Applicant,
-  
-    Thank you for your interest in the position of ${career}. After reviewing your desired wage of $${wage}, our AI Recruitment system has determined that it is far more efficient and cost-effective to automate your position entirely. 
-  
-    We regret to inform you that your skills, while impressive, can now be replicated with 99.9% accuracy by our proprietary AI.
-  
-    Best of luck with your future endeavors!
-  
-    Sincerely,
-    The AI Recruitment Team
-    `;
-    
-    // Display the severance letter in cursive
-    document.getElementById('letter').innerText = letter;
-  }
-  
-  // Start over button functionality
-  document.getElementById('start-over').addEventListener('click', function() {
-    document.getElementById('severance-screen').classList.remove('active');
-    document.getElementById('job-input').classList.add('active');
-    document.getElementById('career').value = '';
-    document.getElementById('wage').value = '';
-  });
+});
