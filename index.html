@@ -1,89 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Recruiter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        #input-screen, #loading-screen, #result-screen {
-            display: none;
-        }
-        .cursive {
-            font-family: 'Brush Script MT', cursive;
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Job Matcher</title>
+
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="input-screen">
-        <h1>Welcome to AI Recruiter</h1>
-        <p>Enter your preferred job and desired wage:</p>
-        <form id="job-form">
-            <label for="career">Career:</label>
-            <input type="text" id="career" name="career" required><br><br>
-            <label for="wage">Desired Wage:</label>
-            <input type="number" id="wage" name="wage" required><br><br>
-            <button type="submit">Submit</button>
-        </form>
+  <!-- Your HTML content -->
+
+  <!-- Link to external JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
+  <!-- Main screen where the user enters job and wage -->
+  <div id="job-input" class="screen active">
+    <h1>Instant Job Matcher</h1>
+    <p>We guarantee to match you with your perfect job. Just enter your desired career and wage!</p>
+    <form id="jobForm">
+      <label for="career">Desired Career:</label>
+      <input type="text" id="career" required><br><br>
+      <label for="wage">Desired Wage:</label>
+      <input type="number" id="wage" required><br><br>
+      <button type="submit">Find My Job!</button>
+    </form>
+  </div>
+
+  <!-- Fake loading screen -->
+  <div id="loading-screen" class="screen">
+    <h1>Matching You With Your Perfect Career...</h1>
+    <div class="loading-bar">
+      <div class="progress"></div>
     </div>
-    <div id="loading-screen">
-        <h1>Matching you with the perfect job...</h1>
-        <div id="loading-messages"></div>
-    </div>
-    <div id="result-screen">
-        <h1>Future Severance Letter</h1>
-        <p class="cursive" id="severance-letter"></p>
-    </div>
+    <ul class="messages">
+      <li>Analyzing job market trends...</li>
+      <li>Finding companies desperate for talent...</li>
+      <li>Optimizing resume for AI scans...</li>
+      <li>Matching you with your future employer...</li>
+    </ul>
+  </div>
 
-    <script>
-        const inputScreen = document.getElementById('input-screen');
-        const loadingScreen = document.getElementById('loading-screen');
-        const resultScreen = document.getElementById('result-screen');
-        const jobForm = document.getElementById('job-form');
-        const loadingMessages = document.getElementById('loading-messages');
-        const severanceLetter = document.getElementById('severance-letter');
+  <!-- Final screen with a "Future Severance Letter" -->
+  <div id="severance-screen" class="screen">
+    <h1>Your Future Severance Letter</h1>
+    <p id="letter" class="cursive"></p>
+    <button id="start-over">Try Again</button>
+  </div>
 
-        const messages = [
-            "Analyzing your skills...",
-            "Contacting recruiters...",
-            "Finding the best match...",
-            "Preparing your new role...",
-        ];
-
-        jobForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            inputScreen.style.display = 'none';
-            loadingScreen.style.display = 'block';
-
-            let messageIndex = 0;
-            const interval = setInterval(() => {
-                loadingMessages.textContent = messages[messageIndex];
-                messageIndex++;
-                if (messageIndex >= messages.length) {
-                    clearInterval(interval);
-                    showSeveranceLetter();
-                }
-            }, 2000);
-        });
-
-        function showSeveranceLetter() {
-            loadingScreen.style.display = 'none';
-            resultScreen.style.display = 'block';
-            const career = document.getElementById('career').value;
-            const wage = document.getElementById('wage').value;
-            severanceLetter.innerHTML = `Dear Applicant,<br><br>
-                We regret to inform you that the requested wage of $${wage} for the position of ${career} is too high.<br><br>
-                Instead, we have decided to automate this position with AI.<br><br>
-                Best regards,<br>
-                Future Employer`;
-        }
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
