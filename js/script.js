@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Get the button and form elements
   const button = document.getElementById('submit-button');
-  const form = document.getElementById('job-form');
+  const form = document.getElementById('job-form-element');
+  const jobFormDiv = document.getElementById('job-form');
   const loadingScreen = document.getElementById('loading-screen');
   const punchlineScreen = document.getElementById('punchline-screen');
   
@@ -11,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
   loadingScreen.style.display = 'none';
   punchlineScreen.style.display = 'none';
 
-  // Add event listener to the button
-  button.addEventListener('click', function(event) {
+  // Add event listener to the form
+  form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the page from refreshing
 
     // Get user input
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const expectedWage = document.getElementById('expected-wage').value;
 
     // Show loading screen
-    form.style.display = 'none';
+    jobFormDiv.style.display = 'none';
     loadingScreen.style.display = 'block';
 
     // Simulate a delay for the punchline
