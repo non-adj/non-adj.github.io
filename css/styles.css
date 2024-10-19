@@ -19,8 +19,21 @@ body {
   display: block;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
   color: #ffffff; /* White text */
+}
+
+p, label, input, textarea {
+  color: #ffffff; /* White text */
+  background-color: #333333; /* Dark background for input elements */
+  border: 1px solid #444444; /* Border for input elements */
+  border-radius: 5px; /* Rounded corners for input elements */
+  padding: 10px;
+  margin: 10px 0;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #bbbbbb; /* Light grey placeholder text */
 }
 
 button {
