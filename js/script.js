@@ -1,38 +1,38 @@
 // Wait for the document to load
-document.addEventListener("DOMContentLoaded", function() {
-  
-  // Get the button and form elements
-  const button = document.getElementById('submit-button');
-  const form = document.getElementById('job-form-element');
-  const jobFormDiv = document.getElementById('job-form');
+document.addEventListener('DOMContentLoaded', () => {
+  const jobForm = document.getElementById('job-form-element');
   const loadingScreen = document.getElementById('loading-screen');
   const punchlineScreen = document.getElementById('punchline-screen');
-  
-  // Hide loading and punchline screens initially
+  const punchlineMessage = document.getElementById('punchline-message');
+
+  // Initially hide loading and punchline screens
   loadingScreen.style.display = 'none';
   punchlineScreen.style.display = 'none';
 
-  // Add event listener to the form
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the page from refreshing
-
-    // Get user input
-    const jobTitle = document.getElementById('job-title').value;
-    const expectedWage = document.getElementById('expected-wage').value;
+  jobForm.addEventListener('submit', (event) => {
+    event.preventDefault();
 
     // Show loading screen
-    jobFormDiv.style.display = 'none';
+    document.getElementById('job-form').style.display = 'none';
     loadingScreen.style.display = 'block';
 
-    // Simulate a delay for the punchline
-    setTimeout(function() {
+    // Simulate processing time
+    setTimeout(() => {
+      const jobTitle = document.getElementById('job-title').value;
+      const expectedWage = document.getElementById('expected-wage').value;
+
+      // Generate severance letter message
+      const message = `Dear ${jobTitle} Employee,\n\n` +
+                      `After careful consideration, we have determined that your expected wage of $${expectedWage} ` +
+                      `is higher than the cost of automating your position. Therefore, we regret to inform you that ` +
+                      `your position will be automated effective immediately.\n\n` +
+                      `Best regards,\n` +
+                      `AI Job Matcher Team`;
+
+      // Display punchline screen with the message
+      punchlineMessage.textContent = message;
       loadingScreen.style.display = 'none';
       punchlineScreen.style.display = 'block';
-      
-      // Generate punchline content
-      const punchlineText = `Dear applicant, we regret to inform you that your expected wage of ${expectedWage} for the job title "${jobTitle}" is too high. It's much more affordable to automate this position using AI.`;
-      document.getElementById('punchline-message').textContent = punchlineText;
-
-    }, 2000); // Delay in milliseconds
+    }, 2000); // Simulate a 2-second processing time
   });
 });

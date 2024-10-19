@@ -70,3 +70,31 @@ body {
     color: #444;
     white-space: pre-line;
   }
+
+  /* Add this to css/styles.css */
+  #loading-screen, #punchline-screen {
+    display: none;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  #job-form {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  /* Punchline Screen */
+  .punchline-screen {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .punchline-message {
+    font-size: 18px;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    white-space: pre-wrap; /* Preserve newlines in the message */
+  }
