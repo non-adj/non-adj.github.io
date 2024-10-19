@@ -24,8 +24,17 @@
 
   <!-- Loading screen -->
   <div id="loading-screen">
-    <h1>Finding the perfect job for you...</h1>
-    <p>Processing...</p>
+    <div class="loading-bar-container">
+      <p class="loading-text">Processing your request...</p>
+      <div class="loading-bar">
+        <div class="progress"></div>
+      </div>
+      <ul class="messages">
+        <li id="message-1" style="display: none;">Searching for available positions...</li>
+        <li id="message-2" style="display: none;">Analyzing your expected wage...</li>
+        <li id="message-3" style="display: none;">Finalizing your severance letter...</li>
+      </ul>
+    </div>
   </div>
 
   <!-- Punchline screen -->

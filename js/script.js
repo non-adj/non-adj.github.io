@@ -16,6 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('job-form').style.display = 'none';
     loadingScreen.style.display = 'block';
 
+    // Display misleading messages at different intervals
+    setTimeout(() => {
+      document.getElementById('message-1').style.display = 'block';
+    }, 3000); // Show after 3 seconds
+
+    setTimeout(() => {
+      document.getElementById('message-1').style.display = 'none';
+      document.getElementById('message-2').style.display = 'block';
+    }, 6000); // Show after 6 seconds
+
+    setTimeout(() => {
+      document.getElementById('message-2').style.display = 'none';
+      document.getElementById('message-3').style.display = 'block';
+    }, 9000); // Show after 9 seconds
+
     // Simulate processing time
     setTimeout(() => {
       const jobTitle = document.getElementById('job-title').value;
@@ -33,6 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
       punchlineMessage.textContent = message;
       loadingScreen.style.display = 'none';
       punchlineScreen.style.display = 'block';
-    }, 2000); // Simulate a 2-second processing time
+    }, 12000); // Simulate a 12-second processing time
   });
 });

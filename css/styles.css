@@ -33,18 +33,40 @@ body {
   }
   
   /* Loading Screen */
+  #loading-screen {
+    display: none;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .loading-bar-container {
+    display: inline-block;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .loading-text {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
   .loading-bar {
     width: 100%;
     height: 20px;
     background-color: #ddd;
     margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
   }
   
   .progress {
     width: 0;
     height: 100%;
     background-color: #4caf50;
-    animation: load 3s linear forwards;
+    animation: load 9s linear forwards; /* Extended animation duration */
+    border-radius: 10px;
   }
   
   @keyframes load {
