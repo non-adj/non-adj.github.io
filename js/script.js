@@ -1,3 +1,5 @@
+import { generateSeveranceLetter } from './language-model.js';
+
 // Wait for the document to load
 document.addEventListener('DOMContentLoaded', () => {
   const jobForm = document.getElementById('job-form-element');
@@ -27,22 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 6000); // Show after 6 seconds
 
     setTimeout(() => {
-      document.getElementById('message-2').style.display = 'none';d
+      document.getElementById('message-2').style.display = 'none';
       document.getElementById('message-3').style.display = 'block';
     }, 9000); // Show after 9 seconds
 
     // Simulate processing time
-    setTimeout(() => {
+    setTimeout(async () => {
       const jobTitle = document.getElementById('job-title').value;
       const expectedWage = document.getElementById('expected-wage').value;
 
-      // Generate severance letter message
-      const message = `Dear ${jobTitle} Employee,\n\n` +
-                      `After careful consideration, we have determined that your expected wage of $${expectedWage} ` +
-                      `is higher than the cost of automating your position. Therefore, we regret to inform you that ` +
-                      `your position will be automated effective immediately.\n\n` +
-                      `Best regards,\n` +
-                      `AI Job Matcher Team`;
+      // Generate severance letter message using the language model
+      const message = await generateSeveranceLetter(jobTitle, expectedWage);
 
       // Display punchline screen with the message
       punchlineMessage.textContent = message;
