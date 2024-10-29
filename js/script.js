@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Display punchline screen with the message
       punchlineMessage.textContent = message;
+      punchlineMessage.classList.add('cursive');
       loadingScreen.style.display = 'none';
       punchlineScreen.style.display = 'block';
     }, 12000); // Simulate a 12-second processing time
