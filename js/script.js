@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 6000); // Show after 6 seconds
 
     setTimeout(() => {
-      document.getElementById('message-2').style.display = 'none';
+      document.getElementById('message-2').style.display = 'none';d
       document.getElementById('message-3').style.display = 'block';
     }, 9000); // Show after 9 seconds
 
