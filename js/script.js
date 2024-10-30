@@ -3,9 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const loadingScreen = document.getElementById('loading-screen');
   const punchlineScreen = document.getElementById('punchline-screen');
   const punchlineMessage = document.getElementById('punchline-message');
+  const verificationResult = document.getElementById('verification-result');
+  const verificationMessage = document.getElementById('verification-message');
 
   loadingScreen.style.display = 'none';
   punchlineScreen.style.display = 'none';
+  verificationResult.style.display = 'none';
 
   jobForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -41,5 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     punchlineMessage.textContent = message;
     loadingScreen.style.display = 'none';
     punchlineScreen.style.display = 'block';
+
+    const verification = verifySeveranceLetter(message);
+    verificationMessage.textContent = verification;
+    verificationResult.style.display = 'block';
   }
 });
