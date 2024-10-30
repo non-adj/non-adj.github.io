@@ -1,25 +1,21 @@
 import * as tf from '@tensorflow/tfjs';
+import { loadGPT2Model, generateText } from './gpt2';
 
-// Load the pre-trained language model using TensorFlow.js
-let model;
+// Load the GPT-2 In-Browser model
+let gpt2Model;
 async function loadModel() {
-  model = await tf.loadLayersModel('https://example.com/path/to/pretrained/language/model.json');
+  gpt2Model = await loadGPT2Model();
 }
 
 // Define a generateSeveranceLetter function that takes job title and expected wage as input
 async function generateSeveranceLetter(jobTitle, expectedWage) {
-  if (!model) {
+  if (!gpt2Model) {
     await loadModel();
   }
 
-  // Use the language model to generate a personalized severance letter
+  // Use the GPT-2 model to generate a personalized severance letter
   const input = `Job Title: ${jobTitle}, Expected Wage: ${expectedWage}`;
-  const inputTensor = tf.tensor([input]);
-  const outputTensor = model.predict(inputTensor);
-  const output = outputTensor.dataSync();
-
-  // Convert the output tensor to a string
-  const severanceLetter = String.fromCharCode.apply(null, output);
+  const severanceLetter = await generateText(gpt2Model, input);
 
   return severanceLetter;
 }
