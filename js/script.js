@@ -1,3 +1,5 @@
+import { generateSeveranceLetter } from './language-model.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   const jobForm = document.getElementById('job-form-element');
   const loadingScreen = document.getElementById('loading-screen');
@@ -32,16 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 12000);
   });
 
-  function generateSeveranceLetter() {
+  async function generateSeveranceLetter() {
     const jobTitle = document.getElementById('job-title').value;
     const expectedWage = document.getElementById('expected-wage').value;
 
-    const message = `Dear ${jobTitle} Employee,\n\n` +
-                    `After careful consideration, we have determined that your expected wage of $${expectedWage} ` +
-                    `is higher than the cost of automating your position. Therefore, we regret to inform you that ` +
-                    `your position will be automated effective immediately.\n\n` +
-                    `Best regards,\n` +
-                    `AI Job Matcher Team`;
+    const message = await generateSeveranceLetter(jobTitle, expectedWage);
 
     punchlineMessage.textContent = message;
     loadingScreen.style.display = 'none';

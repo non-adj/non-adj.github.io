@@ -46,6 +46,9 @@
     <button onclick="window.location.reload();">Try Again</button>
   </div>
 
-  <script src="js/script.js?v=1.0"></script>
+  <script type="module">
+    import { generateSeveranceLetter } from './js/language-model.js';
+    import './js/script.js';
+  </script>
 </body>
 </html>
